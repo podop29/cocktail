@@ -1,0 +1,33 @@
+{%extends 'base.html'%}
+{%block title%}Mixology{%endblock%}
+
+
+{%block content%}
+<img src="https://www.thecocktaildb.com/images/separator.jpg" alt="Line Break" style="width: 100%; object-fit: contain">
+<h3 class="center mt-5">Popular Drinks</h3>
+<div class="row row-cols-3 mt-5">
+    
+{%for drink in drinks%}
+<div class="col-sm-2 drink-showcase">
+    
+    <img class="img-thumbnail" src="{{drink.img_url}}" alt="Img for {{drink.name}}" width="95%">
+    <h4><a href="/drinks/{{drink.id}}">{{drink.name}}</a></h4>
+</div>  
+{% endfor %}
+</div>
+
+<img src="https://www.thecocktaildb.com/images/separator.jpg" alt="Line Break" style="width: 100%; object-fit: contain">
+
+<h3 class="center mt-5">Try Something New!</h3>
+<div class="row row-cols-3 mt-5">
+    
+{%for drink in random_drinks%}
+<div class="col-sm-2 drink-showcase">
+    
+    <img class="img-thumbnail" src="{{drink.img_url}}" alt="Img for {{drink.name}}" width="95%">
+    <h4><a href="/drinks/{{drink.id}}">{{drink.name}}</a></h4>
+</div>  
+{% endfor %}
+</div>
+
+{%endblock%}

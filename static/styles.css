@@ -1,0 +1,29 @@
+body{
+    background-color: #B5838D !important;
+    color: white !important;
+}
+
+.container{
+    margin:0;
+}
+
+ul{
+    list-style-type: none;
+    margin: 0;
+    }
+
+
+.drink-showcase{
+    margin-left: 8%;
+    margin-right: 8%;
+
+    margin-top: 10%;
+    
+}
+
+
+.center{
+    align-items: center;
+    text-align: center;
+
+}

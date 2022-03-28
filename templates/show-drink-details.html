@@ -1,0 +1,30 @@
+{%extends 'base.html'%}
+{%block title%}{{drink.name}}{%endblock%}
+
+{%block content%}
+
+<div class="center">
+    <h3 class=" mt-5">{{drink.name}}</h3>
+    <span class="inline"></span>
+    <img class="img-thumbnail col-sm-2" src="{{drink.img_url}}" alt="Img for {{drink.name}}" width="95%">
+
+</span>
+    <h5 class="p-3">Instructions</h5>
+    
+    <p class="mt-0">{{drink.instructions}}</p>
+
+
+
+    <h5>Ingredients</h5>
+    <ul class="list-group ">
+    {%for ingredient in drink.ingredients%}
+    <li>{{ingredient}}</li>
+    {%endfor%}
+    </ul>
+
+    <form action="/">
+    <button class="btn btn-light btn btn-outline-info">Go Back</button>
+    </form> 
+</div>
+
+{%endblock%}
