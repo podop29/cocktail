@@ -1,8 +1,9 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField
+from wtforms import StringField,RadioField
 from wtforms.validators import InputRequired
 
 class SearchDrinkForm(FlaskForm):
     'For searching drink'
 
-    name = StringField("Snack Name", validators=[InputRequired(message="Cant be Null")])
+    name = StringField("", validators=[InputRequired(message="Cant be Null")])
+    choice = RadioField("Search by Drink Name or Ingredient", choices=[('drinks','drinks'),('ingredients','ingredients')], default='drinks')
