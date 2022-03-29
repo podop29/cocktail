@@ -1,6 +1,10 @@
 body{
-    background-color: #B5838D !important;
+    background-color: #a96e5b !important;
     color: white !important;
+}
+
+a{
+    color: black;
 }
 
 .container{
@@ -32,3 +36,20 @@ ul{
 .drinksearch{
     font-weight: 800;
 }
+
+.info{
+    padding: 20px, 16px;
+    margin: auto;
+    width: 50%;
+    border: 1px, black, solid;
+    width: 30%;
+}
+
+
+input[type=text] {
+    background-color: #FAD02C;
+    color: black;
+    padding: 5px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+  }

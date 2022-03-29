@@ -4,18 +4,25 @@
 
 {%block content%}
 <h3 class="center">Find your new favorite drink</h3>
+
 <span class="drinksearch">
+
 <form method="post" class="center">
     {{form.hidden_tag()}}
-    {%for field in form
-    if field.widget.input_type != 'hidden'%}
-    <p>
-        {{field.label}}
-        {{field}}
-    </p>
+        {%for field in form
+        if field.widget.input_type != 'hidden'%}
+        {%endfor%}
+    <div class="form-group">
+        {{form.name.label}}
+    
+        {{form.name()}}
+    </div>
+    <div class="form-group list-group">
+        {{form.choice.label}}
+        {{form.choice()}}
+    </div>
 
-    {%endfor%}
-    <button>Submit</button>
+    <button class="btn btn-warning" >Submit</button>
 
 
 </form>
@@ -23,13 +30,13 @@
 
 <img src="https://www.thecocktaildb.com/images/separator.jpg" alt="Line Break" style="width: 100%; object-fit: contain">
 <h3 class="center mt-5">Popular Drinks</h3>
-<div class="row row-cols-3 mt-5">
+<div class="row row-cols-3 mt-5 mx-auto ">
     
 {%for drink in drinks%}
 <div class="col-sm-2 drink-showcase">
     
     <img class="img-thumbnail" src="{{drink.img_url}}" alt="Img for {{drink.name}}" width="95%">
-    <h4><a href="/drink/{{drink.id}}">{{drink.name}}</a></h4>
+    <h4><a class="link-warning" href="/drink/{{drink.id}}">{{drink.name}}</a></h4>
 </div>  
 {% endfor %}
 </div>
@@ -37,13 +44,13 @@
 <img src="https://www.thecocktaildb.com/images/separator.jpg" alt="Line Break" style="width: 100%; object-fit: contain">
 
 <h3 class="center mt-5">Try Something New!</h3>
-<div class="row row-cols-3 mt-5">
+<div class="row row-cols-3 mt-5 mx-auto">
     
 {%for drink in random_drinks%}
 <div class="col-sm-2 drink-showcase">
     
     <img class="img-thumbnail" src="{{drink.img_url}}" alt="Img for {{drink.name}}" width="95%">
-    <h4><a href="/drink/{{drink.id}}">{{drink.name}}</a></h4>
+    <h4><a class="link-warning" href="/drink/{{drink.id}}">{{drink.name}}</a></h4>
 </div>  
 {% endfor %}
 </div>

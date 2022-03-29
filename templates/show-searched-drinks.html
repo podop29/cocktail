@@ -7,23 +7,26 @@
 {%if drinks.name == "No Results Found"%}
 <p>{{drinks.name}}</p>
 <form action="/">
-<button>Return to home page</button>
+<button class="btn btn-warning">Return to home page</button>
 </form>
 {%else%}
 <form action="/">
-    <button>Return to home page</button>
+    <button class="btn btn-warning">Return to home page</button>
     </form>
+<div class="row row-cols-2 mx-auto">
 {%for drink in drinks%}
-<div class="col-sm-2 drink-showcase mt-3">
+<div class="col-sm-2 drink-showcase center mt-3">
     
     <img class="img-thumbnail" src="{{drink.img_url}}" alt="Img for {{drink.name}}" width="95%">
-    <h4><a href="/drink/{{drink.id}}">{{drink.name}}</a></h4>
+    <h4><a class="link-warning" href="/drink/{{drink.id}}">{{drink.name}}</a></h4>
 </div>  
 {% endfor %}
+</div>
 <form action="/">
-    <button>Return to home page</button>
+    <button class="btn btn-warning">Return to home page</button>
     </form>
 {%endif%}
 </div>
 </div>
+
 {%endblock%}

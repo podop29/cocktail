@@ -2,7 +2,7 @@ from flask import Flask, request, render_template, flash, redirect
 import requests
 from models import connect_db, db
 from forms import SearchDrinkForm
-from healpers import create_drink_list, create_drink, create_drink_list_by_ingredient, create_drink_showcase, create_empty_drink
+from helpers import create_drink_list, create_drink, create_drink_list_by_ingredient, create_drink_showcase, create_empty_drink
 
 app = Flask(__name__)
 
@@ -27,7 +27,7 @@ def show_home():
     #If the form is filled out, will redirect to the search route
     if form.validate_on_submit():
         name = form.name.data
-        choice=form.choice.data
+        choice = form.choice.data
         return redirect(f'/{choice}/{name}')
     #if the form isnt filled out, will show the home page
     data = requests.get(f"{BASE_API_URL}popular.php").json()
@@ -44,20 +44,29 @@ def show_drink_details(id):
     drink = create_drink(data)
     return render_template('show-drink-details.html', drink = drink)
 
+
+
 @app.route('/drinks/<name>')
 def show_searched_drinks(name):
+    """Shows all drinks that match the search"""
     data = requests.get(f"{BASE_API_URL}search.php?s={name}").json()
-    drink_list = create_drink_list(data)
-
+    try:
+        drink_list = create_drink_list(data)
+    except:
+        #If the try fails, returns an drink that just says seearch not found
+        drink_list = create_empty_drink()
     return render_template('show-searched-drinks.html', drinks = drink_list, name = name)
 
 @app.route('/ingredients/<name>')
 def show_searched_ingredients(name):
-    res = requests.get(f"{BASE_API_URL}search.php?s={name}")
+    """Shows all drinks that have the searched ingredient in them"""
+    query = name.replace(" ", "%20")
+    res = requests.get(f"{BASE_API_URL}filter.php?i={query}")
     data = res.json()
     try:
         drink_list = create_drink_list_by_ingredient(data)
     except:
+        #If the try fails, returns an drink that just says seearch not found
         drink_list = create_empty_drink()
     return render_template('show-searched-drinks.html', drinks = drink_list, name = name)
 
