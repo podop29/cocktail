@@ -18,11 +18,22 @@
 
 
         <h5>Ingredients</h5>
+    <div class="SubjectBox">
+        <div class="Subjects">
         <ul class="list-group ">
             {%for ingredient in drink.ingredients%}
             <li><a class="link-warning" href="/ingredients/{{ingredient}}">{{ingredient}}</a></li>
             {%endfor%}
+        </div>
+        <div class="Subjects">
+            {%for measurement in drink.measurments%}
+            <li class="yellow">{{measurement}}</li>
+            {%endfor%}
+        </div>
         </ul>
+    </div>
+
+
     </div>
     <form action="/">
     <button class="btn btn-warning mt-3">Go Back</button>

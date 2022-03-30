@@ -46,10 +46,72 @@ ul{
 }
 
 
-input[type=text] {
-    background-color: #FAD02C;
+input[type=text], [type=password] {
     color: black;
     padding: 5px;
     border: 2px solid #ccc;
     border-radius: 4px;
+    margin: 3px;
   }
+
+
+
+
+
+.yellow{
+    color: #ffd517;
+}
+
+/*Header Stuff nav bar*/
+
+.navbar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #b47f6d;
+  }
+  
+  .baritem {
+    float: left;
+  }
+  
+  .baritem a {
+    display: block;
+    color: white;
+    text-align: right;
+    padding: 14px 16px;
+    text-decoration: none;
+    margin: 0;
+  }
+  
+  .baritem a:hover {
+    background-color: #b47f6d;
+  }
+
+
+
+
+
+  div.SubjectsBox {
+    align-items: center;
+    align-content: center;
+    border: none;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+
+  }
+  
+  div.Subjects {
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    border: none;
+    display: inline-block;
+    vertical-align: top;
+    color: white;
+    list-style-type: none;
+    margin-left: auto;
+    margin-right: auto;
+}

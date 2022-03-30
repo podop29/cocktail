@@ -1,7 +1,8 @@
-from flask import Flask, request, render_template, flash, redirect
+from flask import Flask, request, render_template, flash, redirect, session
 import requests
-from models import connect_db, db
-from forms import SearchDrinkForm
+from crypt import methods
+from models import connect_db, db, User, Post, Likes
+from forms import SearchDrinkForm, UserForm
 from helpers import create_drink_list, create_drink, create_drink_list_by_ingredient, create_drink_showcase, create_empty_drink
 
 app = Flask(__name__)
@@ -70,8 +71,43 @@ def show_searched_ingredients(name):
         drink_list = create_empty_drink()
     return render_template('show-searched-drinks.html', drinks = drink_list, name = name)
 
-        
+
+#Login and register users
+@app.route('/login', methods=['GET','POST'])
+def login_user():
+    form = UserForm()
+    if form.validate_on_submit():
+        username = form.username.data
+        password = form.password.data
+
+        user = User.authenticate(username,password)
+        if user:
+            session['user_id'] = user.id
+            return redirect('/')
+        else:
+            form.username.errors = ['Invalid Username/Passwords']
+    
+    return render_template('login.html', form = form)
+
+
+@app.route('/register', methods=["GET", 'POST'])
+def register_user():
+    form = UserForm()
+    if form.validate_on_submit():
+        username = form.username.data
+        password = form.password.data
+        new_user = User.register(username, password)
+        db.session.add(new_user)
+        db.session.commit()
+        session['user_id'] = new_user.id
+        flash("Succsess")
+        return redirect('/')
+    else:
+        return render_template('register.html', form=form)       
     
 
-
+@app.route('/logout')
+def logout():
+    session.pop('user_id')
+    return redirect('/')
 

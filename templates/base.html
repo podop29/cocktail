@@ -12,8 +12,18 @@
     
 </header>
 <body>
-    <div class="center">
-    <h1>Mixology</h1>
+   <ul class="navbar">
+       <li class="h2 ms-3 yellow baritem">Mixology</li>
+       <li class="baritem"><a href="/">Home</a></li>
+       {%if session['user_id']%}
+       <li class="baritem"><a href="/logout">LogOut</a></li>
+
+       {%else%}
+       <li class="baritem"><a href="/login">Login</a></li>
+       {%endif%}
+
+   </ul>
+
 </div>
 
     {%block content%} {%endblock%}

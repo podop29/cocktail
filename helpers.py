@@ -45,15 +45,19 @@ def create_empty_drink():
 
 def create_drink(data):
     ingredients = []
+    measurments = []
     for i in range (1,15):
         if data["drinks"][0][f'strIngredient{i}'] is not None:
             ingredients.append( data["drinks"][0][f'strIngredient{i}'])
+        if data["drinks"][0][f'strMeasure{i}'] is not None:
+            measurments.append( data["drinks"][0][f'strMeasure{i}'])
     print(ingredients)
     drink_dict = {'name': data["drinks"][0]['strDrink'],
                       'id': data["drinks"][0]['idDrink'],
                       'img_url' : data["drinks"][0]['strDrinkThumb'],
                       'instructions' : data["drinks"][0]['strInstructions'],
-                      'ingredients' : ingredients
+                      'ingredients' : ingredients,
+                      'measurments' : measurments
           }
     return drink_dict
 
