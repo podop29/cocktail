@@ -51,7 +51,6 @@ def create_drink(data):
             ingredients.append( data["drinks"][0][f'strIngredient{i}'])
         if data["drinks"][0][f'strMeasure{i}'] is not None:
             measurments.append( data["drinks"][0][f'strMeasure{i}'])
-    print(ingredients)
     drink_dict = {'name': data["drinks"][0]['strDrink'],
                       'id': data["drinks"][0]['idDrink'],
                       'img_url' : data["drinks"][0]['strDrinkThumb'],

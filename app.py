@@ -111,3 +111,49 @@ def logout():
     session.pop('user_id')
     return redirect('/')
 
+
+
+#Likes and comments
+@app.route('/drink/<int:drinkid>/like')
+def add_like(drinkid):
+    """Route for adding a like to the db"""
+    if "user_id" not in session:
+        return redirect('/login')
+    new_like = Likes(user_id = session["user_id"], drink_id = drinkid)
+    db.session.add(new_like)
+    db.session.commit()
+    return redirect(f'/{session["user_id"]}/likes')
+
+
+@app.route('/<int:user_id>/likes')
+def show_likes(user_id):
+    """Route for showing a user their likes"""
+    if "user_id" not in session:
+        return redirect('/login')
+    likes = Likes.query.filter_by(user_id = user_id)
+    drink_list_ids = []
+    drink_list = []
+
+    for like in likes:
+        id = like.drink_id
+        drink_list_ids.append(id)
+    
+    idx = 0
+    for drink in drink_list_ids:
+        data = requests.get(f"{BASE_API_URL}lookup.php?i={drink_list_ids[idx]}").json()
+        drink = create_drink(data)
+        drink_list.append(drink)
+        idx += 1
+
+
+    return render_template('show-likes.html', drinks = drink_list)
+
+@app.route('/<int:user_id>/likes/remove/<int:drink_id>', methods=["POST"])
+def remove_drink(user_id,drink_id):
+    likes = Likes.query.filter_by(drink_id = drink_id).first()
+    db.session.delete(likes)
+    db.session.commit()
+    return redirect(f'/{user_id}/likes')
+
+
+

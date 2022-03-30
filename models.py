@@ -1,4 +1,5 @@
 from email.policy import default
+from enum import unique
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 db = SQLAlchemy()
@@ -63,7 +64,7 @@ class Post(db.Model):
 
 
 class Likes(db.Model):
-    """Mapping user likes to posts."""
+    """Mapping user likes to drinks."""
 
     __tablename__ = 'likes' 
 
@@ -77,9 +78,7 @@ class Likes(db.Model):
         db.ForeignKey('users.id', ondelete='cascade')
     )
 
-    post_id = db.Column(
-        db.Integer,
-        db.ForeignKey('posts.id', ondelete='cascade'),
-        unique=True)
+    drink_id = db.Column(
+        db.Integer)
       
 

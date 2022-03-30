@@ -9,15 +9,8 @@
 
     <img class="img-thumbnail col-sm-2" src="{{drink.img_url}}" alt="Img for {{drink.name}}" width="95%">
 
-
-    <div class="info">
-    <h5 class="p-3">Instructions</h5>
-
-    <p class="mt-0">{{drink.instructions}}</p>
-
-
-
-        <h5>Ingredients</h5>
+    
+    <h5>Ingredients</h5>
     <div class="SubjectBox">
         <div class="Subjects">
         <ul class="list-group ">
@@ -33,11 +26,31 @@
         </ul>
     </div>
 
+    <div class="info">
+    <h5 class="p-3">Instructions</h5>
+
+    <p class="mt-0">{{drink.instructions}}</p>
+
+
+
+    
+
 
     </div>
-    <form action="/">
-    <button class="btn btn-warning mt-3">Go Back</button>
+
+    <div class="btn-group">
+    <form action="/">      
+    <button  class="btn btn-warning mt-3 me-3">Go Back</button>
     </form> 
+    {%if session['user_id']%}
+    <form action="/drink/{{drink.id}}/like">
+    <button class="btn btn-danger mt-3 ">Favorite</button>       
+    </form> 
+    {%endif%}
+    </div>
+
+
+
 </div>
 
 {%endblock%}

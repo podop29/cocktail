@@ -1,0 +1,30 @@
+{%extends 'base.html'%}
+{%block title%}likes{%endblock%}
+{%block content%}
+
+<div class="center">
+<h1>Favorite Drinks</h1>
+{%if drinks%}
+<div class="row row-cols-3 mt-5 mx-auto">
+
+{%for drink in drinks%}
+
+<div class="col-sm-2 drink-showcase">
+    
+    <img class="img-thumbnail" src="{{drink.img_url}}" alt="Img for {{drink.name}}" width="95%">
+    <h4><a class="link-warning" href="/drink/{{drink.id}}">{{drink.name}}</a></h4>
+    <form method="post" action="/{{session['user_id']}}/likes/remove/{{drink.id}}">
+    <button class="btn btn-sm btn-danger mt-1 mb-3">Remove</button>
+    </form>
+</div> 
+
+{% endfor %}
+</div>
+
+{%else%}
+<h4 class="center mt-5">No drinks favorited, Go find some!</h4>
+{%endif%}
+
+
+</div>
+{%endblock%}
