@@ -11,3 +11,8 @@ class SearchDrinkForm(FlaskForm):
 class UserForm(FlaskForm):
     username = StringField("Username", validators=[InputRequired()])
     password = PasswordField("Password:", validators=[InputRequired()])
+
+class AddCommentForm(FlaskForm):
+    'For searching drink'
+
+    text = StringField("Write a Comment", validators=[InputRequired(message="Cant be Null")])

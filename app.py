@@ -2,8 +2,8 @@ from flask import Flask, request, render_template, flash, redirect, session
 import requests
 from crypt import methods
 from models import connect_db, db, User, Post, Likes
-from forms import SearchDrinkForm, UserForm
-from helpers import create_drink_list, create_drink, create_drink_list_by_ingredient, create_drink_showcase, create_empty_drink
+from forms import SearchDrinkForm, UserForm, AddCommentForm
+from helpers import create_drink_list, create_drink, create_drink_list_by_ingredient, create_drink_showcase, create_empty_drink, create_comments
 
 app = Flask(__name__)
 
@@ -37,13 +37,37 @@ def show_home():
     random_drink_list = create_drink_showcase(random_data)
     return render_template("home.html", drinks = drink_list, random_drinks = random_drink_list, form=form )
 
-@app.route('/drink/<int:id>')
+@app.route('/drink/<int:id>', methods=['GET','POST'])
 def show_drink_details(id):
     """Details page that shows details on one specific drink by id"""
+    form = AddCommentForm()
+    if form.validate_on_submit():
+        new_comment = Post(text=form.text.data, user_id = session["user_id"], drink_id = id )
+        db.session.add(new_comment)
+        db.session.commit()
+        return redirect(f"/drink/{id}")
+
+
+
     res = requests.get(f"{BASE_API_URL}lookup.php?i={id}")
     data = res.json()
     drink = create_drink(data)
-    return render_template('show-drink-details.html', drink = drink)
+    #Gets comments for post
+    posts = Post.query.filter_by(drink_id = id).all()
+    user_ids = [post.user_id for post in posts]
+    comments = []
+    idx = 0
+    #Loops through each post in the query and makes a comment object with username and text
+    for post in posts:
+        user_id = user_ids[idx]
+        user = User.query.get(user_ids[idx])
+        username = (user.username)
+        idx += 1
+        comments.append(create_comments(user_id,username, post.text))
+
+    
+
+    return render_template('show-drink-details.html', drink = drink, comments = comments, form = form)
 
 
 
@@ -154,6 +178,8 @@ def remove_drink(user_id,drink_id):
     db.session.delete(likes)
     db.session.commit()
     return redirect(f'/{user_id}/likes')
+
+#Comments
 
 
 

@@ -22,7 +22,7 @@ class User(db.Model):
     img_url = db.Column(db.Text, nullable=True)
 
     likes = db.relationship('Likes', backref="users")
-    posts = db.relationship('Post', backref="users")
+
 
 
     @classmethod
@@ -58,7 +58,10 @@ class Post(db.Model):
 
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
-    #user = db.relationship('User', backref='posts')
+    drink_id = db.Column(db.Integer)
+
+
+    user = db.relationship('User', backref='posts')
 
 #----------------------------------------------------------------------#
 
@@ -81,4 +84,3 @@ class Likes(db.Model):
     drink_id = db.Column(
         db.Integer)
       
-
