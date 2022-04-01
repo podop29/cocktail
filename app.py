@@ -4,7 +4,7 @@ from crypt import methods
 from models import connect_db, db, User, Post, Likes
 from forms import SearchDrinkForm, UserForm, AddCommentForm
 from helpers import create_drink_list, create_drink, create_drink_list_by_ingredient, create_drink_showcase, create_empty_drink, create_comments
-
+from auth import API_KEY
 app = Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///cocktail'
@@ -13,7 +13,7 @@ app.config['SQLALCHEMY_ECHO'] = True
 app.config['SECRET_KEY'] = "OOooOOOoOOOoo000"
 
 #api variables
-API_KEY = '9973533'
+
 BASE_API_URL = f'https://www.thecocktaildb.com/api/json/v2/{API_KEY}/'
 
 
@@ -60,10 +60,11 @@ def show_drink_details(id):
     #Loops through each post in the query and makes a comment object with username and text
     for post in posts:
         user_id = user_ids[idx]
+        post_id = post.id
         user = User.query.get(user_ids[idx])
         username = (user.username)
         idx += 1
-        comments.append(create_comments(user_id,username, post.text))
+        comments.append(create_comments(user_id,username, post.text,post_id))
 
     
 
@@ -181,5 +182,11 @@ def remove_drink(user_id,drink_id):
 
 #Comments
 
-
+@app.route('/delete/comment/<int:comment_id>', methods=['POST'])
+def delete_comment(comment_id):
+    post = Post.query.get(comment_id)
+    drink_id = post.drink_id
+    db.session.delete(post)
+    db.session.commit()
+    return redirect(f'/drink/{drink_id}')
 

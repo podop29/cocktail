@@ -63,8 +63,9 @@ def create_drink(data):
 
 
 
-def create_comments(id,username, text):
+def create_comments(id,username, text,post_id):
     return {'user_id': id,
+        'post_id':post_id,
         'username': username,
     'text': text
     }
