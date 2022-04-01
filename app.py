@@ -184,6 +184,7 @@ def remove_drink(user_id,drink_id):
 
 @app.route('/delete/comment/<int:comment_id>', methods=['POST'])
 def delete_comment(comment_id):
+    """Deletes a specific comment by comment id"""
     post = Post.query.get(comment_id)
     drink_id = post.drink_id
     db.session.delete(post)
