@@ -1,5 +1,5 @@
 body{
-    background-color: #a96e5b !important;
+    background-color: #a15237 !important;
     color: white !important;
 }
 
@@ -65,7 +65,7 @@ input[type=text], [type=password] {
   background-color: #b47f6d;
 }
 .card{
-  margin-left: 40%;
+  margin: auto;
 }
 /*Header Stuff nav bar*/
 .navbar {
@@ -73,13 +73,13 @@ input[type=text], [type=password] {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #b47f6d;
+    background-color: #b36e57 !important;
     display: block;
 
   }
   
   .baritem {
-    float: right;
+    float: left !important;
   }
   
   .baritem .ab {
@@ -88,7 +88,7 @@ input[type=text], [type=password] {
     text-align: right;
     padding: 14px 16px;
     text-decoration: none;
-    margin-top: 0%;
+    margin-top: auto;
   }
   
   .baritem .ab:hover {

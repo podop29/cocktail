@@ -12,19 +12,22 @@
     
 </header>
 <body>
+
+    
+
    <ul class="navbar">
-       <li class="h2 ms-3 yellow baritem">Mixology</li>
+       <li class="h2 ms-5 yellow baritem">Mixology</li>
        <li class="baritem"><a class="ab" href="/">Home</a></li>
        {%if session['user_id']%}
        <li class="baritem"><a class="ab" href="/{{session['user_id']}}/likes">Drink Later List</a></li>
-       <li class="baritem"><a class="ab"href="/logout">LogOut</a></li>
+       <li class="baritem"><a class="ab me-5"href="/logout">LogOut</a></li>
        {%else%}
-       <li class="baritem"><a class="ab"href="/login">Login</a></li>
+       <li class="baritem"><a class="ab me-5"href="/login">Login</a></li>
        {%endif%}
 
    </ul>
 
-</div>
+
 
     {%block content%} {%endblock%}
     
