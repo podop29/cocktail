@@ -68,6 +68,12 @@ input[type=text], [type=password] {
   margin: auto;
 }
 /*Header Stuff nav bar*/
+
+.drink-table{
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .navbar {
     list-style-type: none;
     margin: 0;

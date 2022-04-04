@@ -14,14 +14,18 @@
         {%endfor%}
     <div class="form-group">
         {{form.name.label}}
-    
         {{form.name()}}
     </div>
-    <div class="form-group list-group">
+    <div class="form-check form-check-inline">
         {{form.choice.label}}
-        {{form.choice()}}
-    </div>
+        <br>
+        {%for check in form.choice%}
+        {{check}}
+        {{check.label}}
 
+        {%endfor%}
+    </div>
+    <br>
     <button class="btn btn-warning" >Submit</button>
 
 
