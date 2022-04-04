@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/styles.css">
+    <script src="https://kit.fontawesome.com/7031c643aa.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <title>{%block title%}{%endblock%}</title>
 </head>
@@ -16,7 +17,14 @@
     
 
    <ul class="navbar">
-       <li class="h2 ms-5 yellow baritem">Mixology</li>
+       <li class="h2 ms-5 yellow baritem logo">Mixology <i class="fa-solid fa-champagne-glasses fa-sm"></i></li>
+       <li></li>
+       <li></li>
+       <li></li>
+       <li></li>
+       <li></li>
+
+
        <li class="baritem"><a class="ab" href="/">Home</a></li>
        {%if session['user_id']%}
        <li class="baritem"><a class="ab" href="/{{session['user_id']}}/likes">Drink Later List</a></li>

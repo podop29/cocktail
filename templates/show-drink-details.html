@@ -7,7 +7,7 @@
 
 
 
-    <table class="drink-table mt-4" style="width:60%">
+    <table class="drink-table my-4 mb-5" style="width:60%">
         <tr>
             <td style="width:40%"><h3>{{drink.name}}</h3></td>
             <td style="width:60%"><h3>Ingridients</h3></td>
@@ -48,23 +48,7 @@
 
 
 
-
-
-    
-
-    
-
-    
-        
-
-
-
-    
-
-
-    
-
-    <div class="btn-group mb-2">
+    <div class="btn-group mt-5 mb-2">
     <form action="/">      
     <button  class="btn btn-warning mt-3 me-2">Go Back</button>
     </form> 
@@ -102,14 +86,14 @@
 {%if comments%}
 {%for comment in comments%}
 
-<div class="card my-2" style="width: 20rem;">
+<div class="card my-3 comment" style="width: 50rem;">
     <div class="card-body">
         <h4 class="card-title black">{{comment.username}}</h4>
         <p class="card-text black">{{comment.text}}</p>
         {%if comment.user_id == session['user_id']%}
     
         <form method="post" action="/delete/comment/{{comment.post_id}}">
-            <button class="btn btn-danger">X</button>
+            <button class="btn btn-danger mb-1"><i class="fa-solid fa-eraser"></i></button>
         </form>
     {%endif%}
     </div>
