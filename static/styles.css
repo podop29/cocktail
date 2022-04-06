@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 .logo{
   font-family: 'Grape Nuts', cursive;
-  color: white;
+  color: snow;
 }
 body{
     background-color: white !important;
@@ -32,6 +32,12 @@ ul{
     
 }
 
+.beach{
+  background-color: #fff176;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
 
 .center{
     align-items: center;
@@ -96,7 +102,7 @@ input[type=text], [type=password] {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background: linear-gradient(90deg, rgba(0,206,209,1) 27%, rgba(0,209,173,1) 87%);
+    background: linear-gradient(90deg, #00ced1 27%, rgba(0,209,173,1) 87%);
     display: block;
 
   }
@@ -126,7 +132,7 @@ input[type=text], [type=password] {
   margin-right: 10%;
   border-radius: 5px;
   color: white;
-  background-color: #05beed;
+  background-color: #00ced1;
 }
 
 .btn-blue{
