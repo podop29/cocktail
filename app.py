@@ -7,7 +7,7 @@ from helpers import create_drink_list, create_drink, create_drink_list_by_ingred
 import os
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL','postgresql:///cocktail')
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL'.replace("://", "ql://", 1),'postgresql:///cocktail')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = True
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'secretttt')
