@@ -26,35 +26,34 @@
         {%endfor%}
     </div>
     <br>
-    <button class="btn btn-warning" >Submit</button>
+    <button class="btn btn-blue" >Submit</button>
 
 
 </form>
 </span>
 
-<img src="https://www.thecocktaildb.com/images/separator.jpg" alt="Line Break" style="width: 100%; object-fit: contain">
-<h3 class="center mt-1">Popular Drinks</h3>
+<h3 class="center line my-3">Popular Drinks</h3>
 <div class="row row-cols-3 mt-2 mx-auto ">
     
 {%for drink in drinks%}
-<div class="col-sm-2 drink-showcase">
+<div class="col-sm-2 drink-showcase title">
     
     <img class="img-thumbnail" src="{{drink.img_url}}" alt="Img for {{drink.name}}" width="95%">
-    <h4><a class="link-warning" href="/drink/{{drink.id}}">{{drink.name}}</a></h4>
+    <h4><a class="white" href="/drink/{{drink.id}}">{{drink.name}}</a></h4>
 </div>  
 {% endfor %}
 </div>
 
-<img src="https://www.thecocktaildb.com/images/separator.jpg" alt="Line Break" style="width: 100%; object-fit: contain">
 
-<h3 class="center mt-5">Try Something New!</h3>
-<div class="row row-cols-3 mt-5 mx-auto">
+
+<h3 class="center line mt-5">Try Something New!</h3>
+<div class="row row-cols-3 mt-5 mx-auto mb-3">
     
 {%for drink in random_drinks%}
-<div class="col-sm-2 drink-showcase">
+<div class="col-sm-2 drink-showcase title">
     
     <img class="img-thumbnail" src="{{drink.img_url}}" alt="Img for {{drink.name}}" width="95%">
-    <h4><a class="link-warning" href="/drink/{{drink.id}}">{{drink.name}}</a></h4>
+    <h4><a class="blue-text" href="/drink/{{drink.id}}">{{drink.name}}</a></h4>
 </div>  
 {% endfor %}
 </div>

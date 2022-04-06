@@ -7,25 +7,25 @@
 
 
 
-    <table class="drink-table my-4 mb-5" style="width:60%">
+    <table class="drink-table my-4 mb-5 blue-body" style="width:60%">
         <tr>
-            <td style="width:40%"><h3>{{drink.name}}</h3></td>
-            <td style="width:60%"><h3>Ingridients</h3></td>
+            <td  style="width:40%"><h3>{{drink.name}}</h3></td>
+            <td  style="width:60%"><h3>Ingridients</h3></td>
         </tr>
         <tr>
-            <td style="width:35%"><img class="img-thumbnail lg-1" src="{{drink.img_url}}" alt="Img for {{drink.name}}" width="100%"></td>
+            <td style="width:35%"><img class="img-thumbnail lg-1 ms-4" src="{{drink.img_url}}" alt="Img for {{drink.name}}" width="100%"></td>
             <td style="width:35%">
                 <div class="SubjectBox ms-5 fs-3">
                     <div class="Subjects">
                     <ul class="list-group mt-3">
                         {%for ingredient in drink.ingredients%}
-                        <li><a class="link-warning" href="/ingredients/{{ingredient}}">{{ingredient}}</a></li>
+                        <li><a  href="/ingredients/{{ingredient}}">{{ingredient}}</a></li>
                         {%endfor%}
                     </div>
                             
                     <div class="Subjects mt-3">
                         {%for measurement in drink.measurments%}
-                        <li class="yellow">{{measurement}}</li>
+                        <li >{{measurement}}</li>
                         {%endfor%}
                     </div>
                 </ul>
@@ -50,7 +50,7 @@
 
     <div class="btn-group mt-5 mb-2">
     <form action="/">      
-    <button  class="btn btn-warning mt-3 me-2">Go Back</button>
+    <button  class="btn btn-blue mt-3 me-2">Go Back</button>
     </form> 
     {%if session['user_id']%}
     <form action="/drink/{{drink.id}}/like">
@@ -88,8 +88,8 @@
 
 <div class="card my-3 comment" style="width: 50rem;">
     <div class="card-body">
-        <h4 class="card-title black">{{comment.username}}</h4>
-        <p class="card-text black">{{comment.text}}</p>
+        <h4 class="card-title white">{{comment.username}}</h4>
+        <p class="card-text white">{{comment.text}}</p>
         {%if comment.user_id == session['user_id']%}
     
         <form method="post" action="/delete/comment/{{comment.post_id}}">

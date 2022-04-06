@@ -17,7 +17,7 @@
     
 
    <ul class="navbar">
-       <li class="h2 ms-5 yellow baritem logo">Mixology <i class="fa-solid fa-champagne-glasses fa-sm"></i></li>
+       <li class="h2 ms-5 baritem logo">Mixology <i class="fa-solid fa-champagne-glasses fa-sm"></i></li>
        <li></li>
        <li></li>
        <li></li>
@@ -27,7 +27,7 @@
 
        <li class="baritem"><a class="ab" href="/">Home</a></li>
        {%if session['user_id']%}
-       <li class="baritem"><a class="ab" href="/{{session['user_id']}}/likes">Drink Later List</a></li>
+       <li class="baritem"><a class="ab" href="/{{session['user_id']}}/likes">Favorites</a></li>
        <li class="baritem"><a class="ab me-5"href="/logout">LogOut</a></li>
        {%else%}
        <li class="baritem"><a class="ab me-5"href="/login">Login</a></li>

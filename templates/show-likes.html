@@ -3,7 +3,7 @@
 {%block content%}
 
 <div class="center">
-<h1>Favorite Drinks</h1>
+<h1 >Favorite Drinks</h1>
 {%if drinks%}
 <div class="row row-cols-3 mt-5 mx-auto">
 
@@ -13,8 +13,8 @@
     
     <img class="img-thumbnail" src="{{drink.img_url}}" alt="Img for {{drink.name}}" width="95%">
     <form class="inline" method="post" action="/{{session['user_id']}}/likes/remove/{{drink.id}}">
-    <h4><a class="link-warning " href="/drink/{{drink.id}}">{{drink.name}}</a></h4>
-    <button class="btn btn-sm btn-danger mt-1 mb-3 "><i class="fa-solid fa-eraser"></i></button>
+    <h4><a class="blue-text " href="/drink/{{drink.id}}">{{drink.name}}</a></h4>
+    <button class="btn btn-sm btn-blue mt-1 mb-3 "><i class="fa-solid fa-eraser"></i></button>
     </form>
 </div> 
 
@@ -22,7 +22,7 @@
 </div>
 
 {%else%}
-<h4 class="center mt-5">No drinks favorited, Go find some!</h4>
+<h4 class="center mt-5 line">No drinks favorited, Go find some!</h4>
 {%endif%}
 
 

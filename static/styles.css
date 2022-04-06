@@ -1,11 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Grape+Nuts&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 .logo{
   font-family: 'Grape Nuts', cursive;
+  color: white;
 }
 body{
-    background-color: #a15237 !important;
-    color: white !important;
+    background-color: white !important;
+    color: black !important;
+    font-family: 'Open Sans', sans-serif !important;
 }
 
 a{
@@ -62,12 +64,22 @@ input[type=text], [type=password] {
   color:black !important; 
 }
 
+.blue-body{
+  background-color: #16c3ef;
+  color: white !important;
+  text-decoration: none;
+  border-radius: 10px;
+}
+
 
 .yellow{
     color: #ffd517;
 }
 .card-body{
-  background-color: #b47f6d;
+  background-color: #3e8ea2;
+  color: white;
+  text-align: left;
+  
 }
 .card{
   margin: auto;
@@ -84,7 +96,7 @@ input[type=text], [type=password] {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #b36e57 !important;
+    background: linear-gradient(90deg, rgba(0,206,209,1) 27%, rgba(0,209,173,1) 87%);
     display: block;
 
   }
@@ -93,6 +105,11 @@ input[type=text], [type=password] {
     float: left !important;
   }
   
+.title{
+
+  text-align: center;
+}
+
   .baritem .ab {
     display: block;
     color: white;
@@ -102,9 +119,36 @@ input[type=text], [type=password] {
     margin-top: auto;
   }
   
+.line{
+  width: 80%;
+  height: 40px;
+  margin-left: 10%;
+  margin-right: 10%;
+  border-radius: 5px;
+  color: white;
+  background-color: #05beed;
+}
+
+.btn-blue{
+  background-color: #05beed !important;
+  color: white !important;
+
+}
+
+.img-thumbnail{
+  border-color: #03dab6 !important;
+  border-width: 2px !important;
+  border-radius: 10px !important;
+}
+
+.blue-text{
+  color: #05abd5;
+}
+
   .baritem .ab:hover {
-    background-color: #e6a58f;
-  }
+    background-color: #03dab6;
+    transition-duration: 1s; 
+   }
 
 
 
