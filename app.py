@@ -5,12 +5,13 @@ from models import connect_db, db, User, Post, Likes
 from forms import SearchDrinkForm, UserForm, AddCommentForm
 from helpers import create_drink_list, create_drink, create_drink_list_by_ingredient, create_drink_showcase, create_empty_drink, create_comments
 from auth import API_KEY
+import os
 app = Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///cocktail'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = True
-app.config['SECRET_KEY'] = "OOooOOOoOOOoo000"
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'secretttt')
 
 #api variables
 
