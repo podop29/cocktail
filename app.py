@@ -13,8 +13,6 @@ if uri.startswith("postgres://"):
 app.config['SQLALCHEMY_DATABASE_URI'] = uri
 
 
-
-
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = True
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'secretttt')
@@ -44,6 +42,7 @@ def show_home():
     random_drink_list = create_drink_showcase(random_data)
     return render_template("home.html", drinks = drink_list, random_drinks = random_drink_list, form=form )
 
+
 @app.route('/drink/<int:id>', methods=['GET','POST'])
 def show_drink_details(id):
     """Details page that shows details on one specific drink by id"""
@@ -53,9 +52,6 @@ def show_drink_details(id):
         db.session.add(new_comment)
         db.session.commit()
         return redirect(f"/drink/{id}")
-
-
-
     res = requests.get(f"{BASE_API_URL}lookup.php?i={id}")
     data = res.json()
     drink = create_drink(data)
@@ -107,6 +103,9 @@ def show_searched_ingredients(name):
 #Login and register users
 @app.route('/login', methods=['GET','POST'])
 def login_user():
+    """
+    If login validates, saves user to user id and logs them in, else returns an error and re-renders template
+    """
     form = UserForm()
     if form.validate_on_submit():
         username = form.username.data
@@ -124,6 +123,7 @@ def login_user():
 
 @app.route('/register', methods=["GET", 'POST'])
 def register_user():
+    """If form validates, add user to session and register new user, then redirect to home, else re-render template"""
     form = UserForm()
     if form.validate_on_submit():
         username = form.username.data
@@ -162,22 +162,23 @@ def show_likes(user_id):
     """Route for showing a user their likes"""
     if "user_id" not in session:
         return redirect('/login')
+    #Gets lost of likes by a user
     likes = Likes.query.filter_by(user_id = user_id)
     drink_list_ids = []
     drink_list = []
 
+    # get list of drink ids for users likes
     for like in likes:
         id = like.drink_id
         drink_list_ids.append(id)
     
+    #Looks for drink in likes create a drink object and append it
     idx = 0
     for drink in drink_list_ids:
         data = requests.get(f"{BASE_API_URL}lookup.php?i={drink_list_ids[idx]}").json()
         drink = create_drink(data)
         drink_list.append(drink)
         idx += 1
-
-
     return render_template('show-likes.html', drinks = drink_list)
 
 @app.route('/<int:user_id>/likes/remove/<int:drink_id>', methods=["POST"])
